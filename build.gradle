@@ -4,10 +4,14 @@ plugins {
     id "maven-publish"
     id "signing"
     id "com.github.ben-manes.versions" version "0.27.0"
-//    id "com.github.hierynomus.license" version "0.15.0"
+    id "com.github.hierynomus.license" version "0.15.0"
 }
 
 apply plugin: "jacoco"
+
+// workhack for license issue #76
+gradle.startParameter.excludedTaskNames += "licenseMain"
+gradle.startParameter.excludedTaskNames += "licenseTest"
 
 group = "de.alpharogroup"
 version = "1-SNAPSHOT"
@@ -22,23 +26,31 @@ repositories {
 ext {
     lombokVersion = "1.18.10"
     snakeyamlVersion = "1.25"
+    commonsIoVersion = "2.6"
+    resourcebundleCoreVersion = "3.1"
     sillyCollectionsVersion = "5.4"
     fileWorkerVersion = "5.3"
     testObjectsVersion = "5.2"
     jobjContractVerifierVersion = "3.2"
+    mysticCryptVersion = "7.1.2"
     testngVersion = "7.0.0"
     junitVersion = "4.12"
     meanbeanVersion = "2.0.3"
     meanbeanFactoriesVersion = "1.1.1"
     mockitoCoreVersion = "3.1.0"
+    propertiesToYamlConverterVersion = "1.0.1"
 }
 
 dependencies {
     compile "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     compile "org.yaml:snakeyaml:${snakeyamlVersion}"
+    compile "commons-io:commons-io:${commonsIoVersion}"
+    compile "de.alpharogroup:resourcebundle-core:${resourcebundleCoreVersion}"
+    compile "com.anubhavshukla:properties-to-yaml-converter:${propertiesToYamlConverterVersion}"
     compile "de.alpharogroup:silly-collections:${sillyCollectionsVersion}"
     compile "de.alpharogroup:file-worker:${fileWorkerVersion}"
+    testCompile "de.alpharogroup:mystic-crypt:${mysticCryptVersion}"
     testCompile "de.alpharogroup:test-objects:${testObjectsVersion}"
     testCompile "de.alpharogroup:jobj-contract-verifier:${jobjContractVerifierVersion}"
     testCompile "org.testng:testng:${testngVersion}"
@@ -47,7 +59,39 @@ dependencies {
     testCompile "de.alpharogroup:meanbean-factories:${meanbeanFactoriesVersion}"
     testCompile "org.mockito:mockito-core:${mockitoCoreVersion}"
 }
-
+//
+//license {
+//    ext.year="2015"
+//    ext.owner="Asterios Raptis"
+//    header rootProject.file("src/main/resources/LICENSE.txt")
+//    excludes(["**/README",
+//              "**/README.md",
+//              "**/LICENSE",
+//              "**/NOTICE",
+//              "**/*.xml",
+//              "**/*.xsl",
+//              "**/*.xsd",
+//              "**/*.dtd",
+//              "**/*.html",
+//              "**/*.jsp",
+//              "**/*.jpa",
+//              "**/*.sql",
+//              "**/*.properties",
+//              "**/*.bat",
+//              "**/*.gradle",
+//              "**/*.MF",
+//              "**/*.txt",
+//              "**/*.vm",
+//              "**/*.log",
+//              "**/*.map",
+//              "**/*.js.map",
+//              "**/*.tmpl",
+//              "**/*.js.tmpl",
+//              "**/*.editorconfig",
+//              "**/*.lombok.config",
+//              "src/test/resources/**",
+//              "src/main/resources/**"])
+//}
 
 task sourcesJar(type: Jar) {
     archiveClassifier.set("sources")
@@ -140,3 +184,4 @@ jacocoTestReport {
 }
 
 check.dependsOn jacocoTestReport
+

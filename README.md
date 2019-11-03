@@ -54,14 +54,14 @@ You can first define the version properties and add than the following maven dep
 
 	<properties>
 			...
-		<!-- yaml-to-prop-to-yaml version -->
-		<yaml-to-prop-to-yaml.version>7.1.2</yaml-to-prop-to-yaml.version>
+		<!-- YAML-TO-PROP-TO-YAML version -->
+		<yaml-to-prop-to-yaml.version>1</yaml-to-prop-to-yaml.version>
 			...
 	</properties>
 			...
 		<dependencies>
 			...
-			<!-- yaml-to-prop-to-yaml DEPENDENCY -->
+			<!-- YAML-TO-PROP-TO-YAML DEPENDENCY -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>yaml-to-prop-to-yaml</artifactId>
@@ -82,7 +82,7 @@ ext {
 }
 dependencies {
 			...
-compile group: "de.alpharogroup:yaml-to-prop-to-yaml:${yamlToPropToYamlVersion}"
+compile "de.alpharogroup:yaml-to-prop-to-yaml:${yamlToPropToYamlVersion}"
 			...
 }
 ```
