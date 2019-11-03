@@ -1,6 +1,13 @@
 ## Change log
 ----------------------
 
+Version 1.1
+-------------
+
+CHANGED:
+
+- changed dependency from resourcebundle-inspector to resourcebundle-core
+
 Version 1
 -------------
 

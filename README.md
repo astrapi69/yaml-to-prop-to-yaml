@@ -55,7 +55,7 @@ You can first define the version properties and add than the following maven dep
 	<properties>
 			...
 		<!-- YAML-TO-PROP-TO-YAML version -->
-		<yaml-to-prop-to-yaml.version>1</yaml-to-prop-to-yaml.version>
+		<yaml-to-prop-to-yaml.version>1.1</yaml-to-prop-to-yaml.version>
 			...
 	</properties>
 			...
@@ -77,7 +77,7 @@ You can first define the version in the ext section and add than the following g
 ```
 ext {
 			...
-    yamlToPropToYamlVersion = "1"
+    yamlToPropToYamlVersion = "1.1"
 			...
 }
 dependencies {
