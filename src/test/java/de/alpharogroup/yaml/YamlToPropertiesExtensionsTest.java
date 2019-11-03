@@ -24,18 +24,18 @@
  */
 package de.alpharogroup.yaml;
 
-import org.meanbean.test.BeanTestException;
-import org.meanbean.test.BeanTester;
-import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
-import de.alpharogroup.file.search.PathFinder;
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
+import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import de.alpharogroup.file.search.PathFinder;
 
 /**
  * The unit test class for the class {@link YamlToPropertiesExtensions}
@@ -45,6 +45,7 @@ public class YamlToPropertiesExtensionsTest
 
 	/**
 	 * Test method for {@link YamlToPropertiesExtensions#toProperties(String)}
+	 * 
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
@@ -64,7 +65,7 @@ public class YamlToPropertiesExtensionsTest
 	 * Test method for {@link YamlToPropertiesExtensions} with {@link BeanTester}
 	 */
 	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
-		UnsupportedOperationException.class })
+			UnsupportedOperationException.class })
 	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();

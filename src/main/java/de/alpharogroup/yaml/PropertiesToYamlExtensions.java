@@ -24,15 +24,16 @@
  */
 package de.alpharogroup.yaml;
 
-import com.anubhavshukla.p2y.converter.PropertiesToYamlConverter;
-import lombok.NonNull;
-import lombok.experimental.UtilityClass;
-import org.apache.commons.io.FileUtils;
-
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+
+import org.apache.commons.io.FileUtils;
+
+import com.anubhavshukla.p2y.converter.PropertiesToYamlConverter;
+
+import lombok.NonNull;
+import lombok.experimental.UtilityClass;
 
 /**
  * The class {@link PropertiesToYamlExtensions} provides methods for convert properties to yaml

@@ -24,19 +24,19 @@
  */
 package de.alpharogroup.yaml;
 
-import de.alpharogroup.crypto.file.checksum.ChecksumExtensions;
-import de.alpharogroup.crypto.obfuscation.character.CharacterObfuscator;
-import de.alpharogroup.file.search.PathFinder;
-import org.apache.commons.io.FileUtils;
-import org.meanbean.test.BeanTestException;
-import org.meanbean.test.BeanTester;
-import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
-import static org.testng.Assert.assertEquals;
+import org.apache.commons.io.FileUtils;
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
+import org.testng.annotations.Test;
+
+import de.alpharogroup.crypto.file.checksum.ChecksumExtensions;
+import de.alpharogroup.file.search.PathFinder;
 
 /**
  * The unit test class for the class {@link PropertiesToYamlExtensions}
@@ -45,31 +45,18 @@ public class PropertiesToYamlExtensionsTest
 {
 
 	/**
-	 * Test method for {@link PropertiesToYamlExtensions#toYamlString(File)}
-	 */
-	@Test public void testToYamlString()
-	{
-		String expected;
-		String actual;
-		File propertiesFile = new File( PathFinder.getSrcTestResourcesDir(), "config.properties");
-		actual = PropertiesToYamlExtensions.toYamlString(propertiesFile);
-		expected = "application:\n" + "  http:\n" + "    port  :  18080\n" + "  https:\n"
-			+ "    port :  18443\n" + "configuration:\n" + "  type:  DEVELOPMENT\n"
-			+ "version: ${project.version}\n";
-		assertEquals(actual, expected);
-	}
-
-	/**
 	 * Test method for {@link PropertiesToYamlExtensions#toYamlFile(File, File)}
+	 * 
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
-	@Test public void testToYamlFile() throws IOException
+	@Test
+	public void testToYamlFile() throws IOException
 	{
 		long expected;
 		long actual;
-		File propertiesFile = new File( PathFinder.getSrcTestResourcesDir(), "config.properties");
-		File yamlFile = new File( PathFinder.getSrcTestResourcesDir(), "config.yml");
+		File propertiesFile = new File(PathFinder.getSrcTestResourcesDir(), "config.properties");
+		File yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "config.yml");
 		PropertiesToYamlExtensions.toYamlFile(propertiesFile, yamlFile);
 		actual = ChecksumExtensions.getChecksum(yamlFile, true);
 		expected = 3250500933L;
@@ -78,10 +65,26 @@ public class PropertiesToYamlExtensionsTest
 	}
 
 	/**
+	 * Test method for {@link PropertiesToYamlExtensions#toYamlString(File)}
+	 */
+	@Test
+	public void testToYamlString()
+	{
+		String expected;
+		String actual;
+		File propertiesFile = new File(PathFinder.getSrcTestResourcesDir(), "config.properties");
+		actual = PropertiesToYamlExtensions.toYamlString(propertiesFile);
+		expected = "application:\n" + "  http:\n" + "    port  :  18080\n" + "  https:\n"
+			+ "    port :  18443\n" + "configuration:\n" + "  type:  DEVELOPMENT\n"
+			+ "version: ${project.version}\n";
+		assertEquals(actual, expected);
+	}
+
+	/**
 	 * Test method for {@link PropertiesToYamlExtensions} with {@link BeanTester}
 	 */
 	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
-		UnsupportedOperationException.class })
+			UnsupportedOperationException.class })
 	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();

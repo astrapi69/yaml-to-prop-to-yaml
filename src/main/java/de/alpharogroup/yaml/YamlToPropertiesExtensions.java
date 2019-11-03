@@ -27,7 +27,6 @@ package de.alpharogroup.yaml;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -36,10 +35,10 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.TreeMap;
 
-import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 import org.apache.commons.io.FileUtils;
 import org.yaml.snakeyaml.Yaml;
 
+import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 import lombok.experimental.UtilityClass;
 
 /**
