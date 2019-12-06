@@ -35,7 +35,7 @@ import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.crypto.file.checksum.ChecksumExtensions;
+import de.alpharogroup.crypto.file.checksum.FileChecksumExtensions;
 import de.alpharogroup.file.search.PathFinder;
 
 /**
@@ -58,7 +58,7 @@ public class PropertiesToYamlExtensionsTest
 		File propertiesFile = new File(PathFinder.getSrcTestResourcesDir(), "config.properties");
 		File yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "config.yml");
 		PropertiesToYamlExtensions.toYamlFile(propertiesFile, yamlFile);
-		actual = ChecksumExtensions.getChecksum(yamlFile, true);
+		actual = FileChecksumExtensions.getChecksum(yamlFile, true);
 		expected = 3250500933L;
 		assertEquals(actual, expected);
 		FileUtils.deleteQuietly(yamlFile);
