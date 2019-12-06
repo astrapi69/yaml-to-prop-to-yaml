@@ -79,7 +79,7 @@ public class YamlToPropertiesExtensions
 	 *             Signals that an I/O exception has occurred
 	 */
 	@SuppressWarnings("unchecked")
-	public static TreeMap<String, Map<String, Object>> toTreeMap(Path path) throws IOException
+	public static TreeMap<String, Object> toTreeMap(Path path) throws IOException
 	{
 		try (InputStream inputStream = Files.newInputStream(path))
 		{
@@ -96,13 +96,24 @@ public class YamlToPropertiesExtensions
 	 *            the properties delimiter
 	 * @return the string
 	 */
-	private static String toPropertyEntries(TreeMap<String, Map<String, Object>> treeMap,
+	private static String toPropertyEntries(TreeMap<String, Object> treeMap,
 		String propertiesDelimiter)
 	{
 		StringBuilder sb = new StringBuilder();
 		for (String key : treeMap.keySet())
 		{
-			sb.append(toEntry(key, treeMap.get(key), propertiesDelimiter));
+			Object object = treeMap.get(key);
+			if(object instanceof String){
+				String stringObject = (String) object;
+				sb.append(key)
+						.append(propertiesDelimiter)
+						.append(stringObject)
+						.append("\n");
+			}
+			if(object instanceof Map){
+				Map<String, Object> stringObjectMap = (Map<String, Object>) object;
+				sb.append(toEntry(key, stringObjectMap, propertiesDelimiter));
+			}
 		}
 		return sb.toString();
 	}

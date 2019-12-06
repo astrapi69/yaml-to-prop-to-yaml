@@ -23,6 +23,8 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+name: yaml-to-prop-to-yaml
+environment: dev
 
 app:
   name: xml-extensions
@@ -38,3 +40,10 @@ spring:
   datasource:
     username: postgres
     password: postgres
+    url:  ${app.db-url-prefix}${app.db-host}:${app.db-port}/${app.db-name}
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
