@@ -1,8 +1,12 @@
 ## Change log
 ----------------------
 
-Version 1.2-SNAPSHOT
+Version 1.1.1
 -------------
+
+CHANGED:
+
+- fix of ClassCastException for single property
 
 Version 1.1
 -------------
