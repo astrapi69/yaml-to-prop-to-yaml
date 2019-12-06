@@ -96,6 +96,7 @@ public class YamlToPropertiesExtensions
 	 *            the properties delimiter
 	 * @return the string
 	 */
+	@SuppressWarnings("unchecked")
 	private static String toPropertyEntries(TreeMap<String, Object> treeMap,
 		String propertiesDelimiter)
 	{
@@ -103,15 +104,14 @@ public class YamlToPropertiesExtensions
 		for (String key : treeMap.keySet())
 		{
 			Object object = treeMap.get(key);
-			if(object instanceof String){
-				String stringObject = (String) object;
-				sb.append(key)
-						.append(propertiesDelimiter)
-						.append(stringObject)
-						.append("\n");
+			if (object instanceof String)
+			{
+				String stringObject = (String)object;
+				sb.append(key).append(propertiesDelimiter).append(stringObject).append("\n");
 			}
-			if(object instanceof Map){
-				Map<String, Object> stringObjectMap = (Map<String, Object>) object;
+			if (object instanceof Map)
+			{
+				Map<String, Object> stringObjectMap = ((Map<String, Object>)object);
 				sb.append(toEntry(key, stringObjectMap, propertiesDelimiter));
 			}
 		}
