@@ -4,13 +4,17 @@
 Version 1.2-SNAPSHOT
 -------------
 
+ADDED:
+ 
+- new idea run configurations for gradle builds created
+
 CHANGED:
 
-- update of gradle version to 6.0.1
-- update of silly-collections dependency version to 5.6
+- update of silly-collections dependency version to 5.8
 - update of file-worker dependency version to 5.4
 - update of mystic-crypt test dependency version to 7.2
 - update of junit test dependency version to 4.13-rc-2
+- update of testng test dependency version to 7.1.0
 - update of mockito-core test dependency version to 3.2.0
 
 Version 1.1.1

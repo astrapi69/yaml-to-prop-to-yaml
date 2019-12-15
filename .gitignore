@@ -22,6 +22,8 @@
 .idea/inspectionProfiles
 .idea/copyright
 .idea/libraries
+.idea/codeStyles
+.idea/shelf
 .idea/*.*
 /.idea/$PRODUCT_WORKSPACE_FILE$
 
@@ -37,7 +39,6 @@
 # maven generated files #
 #########################
 /target
-*.versionsBackup
 
 #############
 # Zip files #
@@ -70,9 +71,9 @@
 # gradle files #
 ################
 /build
-/out
 /.gradle
 /gradle
+/out
 # Ignore Gradle GUI config
 gradle-app.setting
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
