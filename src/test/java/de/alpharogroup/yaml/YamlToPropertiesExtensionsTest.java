@@ -24,18 +24,17 @@
  */
 package de.alpharogroup.yaml;
 
-import static org.testng.Assert.assertEquals;
+import de.alpharogroup.file.search.PathFinder;
+import org.meanbean.test.BeanTestException;
+import org.meanbean.test.BeanTester;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
-import org.meanbean.test.BeanTestException;
-import org.meanbean.test.BeanTester;
-import org.testng.annotations.Test;
-
-import de.alpharogroup.file.search.PathFinder;
+import static org.testng.Assert.assertEquals;
 
 /**
  * The unit test class for the class {@link YamlToPropertiesExtensions}

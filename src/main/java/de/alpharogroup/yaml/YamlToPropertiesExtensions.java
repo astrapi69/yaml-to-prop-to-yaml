@@ -24,6 +24,11 @@
  */
 package de.alpharogroup.yaml;
 
+import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
+import lombok.experimental.UtilityClass;
+import org.apache.commons.io.FileUtils;
+import org.yaml.snakeyaml.Yaml;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,12 +39,6 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Properties;
 import java.util.TreeMap;
-
-import org.apache.commons.io.FileUtils;
-import org.yaml.snakeyaml.Yaml;
-
-import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
-import lombok.experimental.UtilityClass;
 
 /**
  * The class {@link YamlToPropertiesExtensions} provides methods for convert yaml files to
@@ -135,15 +134,17 @@ public class YamlToPropertiesExtensions
 		StringBuilder sb = new StringBuilder();
 		for (String mapKey : map.keySet())
 		{
-			if (map.get(mapKey) instanceof Map)
+			Object object = map.get(mapKey);
+			if (object instanceof Map)
 			{
-				sb.append(toEntry(key + "." + mapKey, (Map<String, Object>)map.get(mapKey),
-					propertiesDelimiter));
+				Map<String, Object> castedMap = (Map<String, Object>)object;
+				sb.append(toEntry(key + "." + mapKey, castedMap, propertiesDelimiter));
 			}
 			else
 			{
-				sb.append(key).append(".").append(mapKey).append(propertiesDelimiter)
-					.append(map.get(mapKey).toString()).append("\n");
+				String value = object.toString();
+				sb.append(key).append(".").append(mapKey).append(propertiesDelimiter).append(value)
+					.append("\n");
 			}
 		}
 		return sb.toString();
