@@ -57,7 +57,7 @@ public class YamlToPropertiesExtensionsTest
 		File yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "application.yml");
 		Properties properties = YamlToPropertiesExtensions.toProperties(yamlFile.getAbsolutePath());
 		actual = properties.size();
-		expected = 14;
+		expected = 15;
 		assertEquals(actual, expected);
 	}
 

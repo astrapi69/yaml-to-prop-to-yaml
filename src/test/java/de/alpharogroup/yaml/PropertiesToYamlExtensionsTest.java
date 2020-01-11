@@ -59,7 +59,7 @@ public class PropertiesToYamlExtensionsTest
 		File yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "config.yml");
 		PropertiesToYamlExtensions.toYamlFile(propertiesFile, yamlFile);
 		actual = FileChecksumExtensions.getChecksum(yamlFile, true);
-		expected = 3250500933L;
+		expected = 172605078L;
 		assertEquals(actual, expected);
 		FileUtils.deleteQuietly(yamlFile);
 	}
@@ -74,9 +74,37 @@ public class PropertiesToYamlExtensionsTest
 		String actual;
 		File propertiesFile = new File(PathFinder.getSrcTestResourcesDir(), "config.properties");
 		actual = PropertiesToYamlExtensions.toYamlString(propertiesFile);
-		expected = "application:\n" + "  http:\n" + "    port  :  18080\n" + "  https:\n"
-			+ "    port :  18443\n" + "configuration:\n" + "  type:  DEVELOPMENT\n"
-			+ "version: ${project.version}\n";
+		expected = "application:\n" +
+				"  http:\n" +
+				"    port: '18080'\n" +
+				"  https:\n" +
+				"    port: '18443'\n" +
+				"  public-paths:\n" +
+				"  - /v1/jwt/authenticate\n" +
+				"  - /v1/jwt/ispublic\n" +
+				"  - /v1/auth/signin\n" +
+				"configuration:\n" +
+				"  type: DEVELOPMENT\n" +
+				"version: ${project.version}\n";
+		assertEquals(actual, expected);
+	}
+
+	/**
+	 * Test method for {@link PropertiesToYamlExtensions#toYamlString(File)}
+	 */
+	@Test
+	public void testToYamlStringWithList()
+	{
+		String expected;
+		String actual;
+		File propertiesFile = new File(PathFinder.getSrcTestResourcesDir(), "list-or-array.properties");
+		actual = PropertiesToYamlExtensions.toYamlString(propertiesFile);
+		expected = "application:\n" +
+				"  public-paths:\n" +
+				"  - first: /v1/first\n" +
+				"    second: /v1/second\n" +
+				"  - first: /v1/public/first\n" +
+				"    second: /v1/public/second\n";
 		assertEquals(actual, expected);
 	}
 
@@ -90,4 +118,5 @@ public class PropertiesToYamlExtensionsTest
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(PropertiesToYamlExtensions.class);
 	}
+
 }

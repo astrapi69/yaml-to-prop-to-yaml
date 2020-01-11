@@ -112,6 +112,13 @@ Don't forget to add new units tests on your changes.
 Do not hesitate to contact the yaml-to-prop-to-yaml developers with your questions, concerns, comments, bug reports, or feature requests.
 - Feature requests, questions and bug reports can be reported at the [issues page](https://github.com/astrapi69/yaml-to-prop-to-yaml/issues).
 
+# Similar projects
+
+Here is a list of awesome projects:
+
+* [properties-to-yaml-converter](https://github.com/anubhavshukla/properties-to-yaml-converter) Java implementation to convert Properties files to Yaml
+* []()
+
 ## Credits
 
 |**Travis CI**|

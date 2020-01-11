@@ -28,9 +28,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+import de.alpharogroup.prop.to.yaml.PropertiesToYamlConverter;
 import org.apache.commons.io.FileUtils;
-
-import com.anubhavshukla.p2y.converter.PropertiesToYamlConverter;
 
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
@@ -52,20 +51,19 @@ public class PropertiesToYamlExtensions
 	 */
 	public static String toYamlString(final @NonNull File propertiesFile)
 	{
-		return toYamlString(propertiesFile.getAbsolutePath());
+		return PropertiesToYamlConverter.convert(propertiesFile);
 	}
 
 	/**
 	 * Resolves the properties file from the given file name and converts it to a yaml string
 	 *
-	 * @param propertiesFilename
+	 * @param propertiesFile
 	 *            the properties filename
 	 * @return the yaml string
 	 */
-	public static String toYamlString(final @NonNull String propertiesFilename)
+	public static String toYamlStringFromFile(final @NonNull File propertiesFile)
 	{
-		PropertiesToYamlConverter propertiesToYamlConverter = new PropertiesToYamlConverter();
-		return propertiesToYamlConverter.toYamlString(propertiesFilename);
+		return PropertiesToYamlConverter.convert(propertiesFile);
 	}
 
 	/**
@@ -81,8 +79,7 @@ public class PropertiesToYamlExtensions
 	public static void toYamlFile(final @NonNull File propertiesFile,
 		final @NonNull File newYamlFileToWrite) throws IOException
 	{
-		String propertiesFilename = propertiesFile.getAbsolutePath();
-		String yamlString = toYamlString(propertiesFilename);
+		String yamlString = toYamlStringFromFile(propertiesFile);
 		FileUtils.writeStringToFile(newYamlFileToWrite, yamlString, StandardCharsets.UTF_8);
 	}
 

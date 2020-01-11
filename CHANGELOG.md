@@ -6,12 +6,12 @@ Version 1.2-SNAPSHOT
 
 CHANGED:
 
-- update of gradle version to 6.0.1
-- update of silly-collections dependency version to 5.6
+- update of silly-collections dependency version to 6
 - update of file-worker dependency version to 5.4
-- update of mystic-crypt test dependency version to 7.2
-- update of junit test dependency version to 4.13-rc-2
-- update of mockito-core test dependency version to 3.2.0
+- update of mystic-crypt test dependency version to 7.3
+- update of junit test dependency version to 4.13
+- update of testng test dependency version to 7.1.1
+- update of mockito-core test dependency version to 3.2.4
 
 Version 1.1.1
 -------------

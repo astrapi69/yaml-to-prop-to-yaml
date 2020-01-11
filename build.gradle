@@ -15,7 +15,7 @@ gradle.startParameter.excludedTaskNames += "licenseTest"
 
 group = "de.alpharogroup"
 version = "1.2-SNAPSHOT"
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories {
     mavenLocal()
@@ -23,75 +23,57 @@ repositories {
     jcenter()
 }
 
-ext {
-    lombokVersion = "1.18.10"
-    snakeyamlVersion = "1.25"
-    commonsIoVersion = "2.6"
-    resourcebundleCoreVersion = "3.2"
-    sillyCollectionsVersion = "5.6"
-    fileWorkerVersion = "5.4"
-    testObjectsVersion = "5.2"
-    jobjContractVerifierVersion = "3.2"
-    mysticCryptVersion = "7.2"
-    testngVersion = "7.0.0"
-    junitVersion = "4.13-rc-2"
-    meanbeanVersion = "2.0.3"
-    meanbeanFactoriesVersion = "1.1.1"
-    mockitoCoreVersion = "3.2.0"
-    propertiesToYamlConverterVersion = "1.0.1"
+dependencies {
+    compile "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    compile "org.yaml:snakeyaml:$snakeyamlVersion"
+    compile "commons-io:commons-io:$commonsIoVersion"
+    compile "de.alpharogroup:resourcebundle-core:$resourcebundleCoreVersion"
+    compile "de.alpharogroup:silly-collections:$sillyCollectionsVersion"
+    compile "de.alpharogroup:file-worker:$fileWorkerVersion"
+    compile "de.alpharogroup:prop-to-yaml:$propToYamlVersion"
+    testCompile "de.alpharogroup:mystic-crypt:$mysticCryptVersion"
+    testCompile "de.alpharogroup:test-objects:$testObjectsVersion"
+    testCompile "de.alpharogroup:jobj-contract-verifier:$jobjContractVerifierVersion"
+    testCompile "org.testng:testng:$testngVersion"
+    testCompile "junit:junit:$junitVersion"
+    testCompile "org.meanbean:meanbean:$meanbeanVersion"
+    testCompile "de.alpharogroup:meanbean-factories:$meanbeanFactoriesVersion"
+    testCompile "org.mockito:mockito-core:$mockitoCoreVersion"
 }
 
-dependencies {
-    compile "org.projectlombok:lombok:${lombokVersion}"
-    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
-    compile "org.yaml:snakeyaml:${snakeyamlVersion}"
-    compile "commons-io:commons-io:${commonsIoVersion}"
-    compile "de.alpharogroup:resourcebundle-core:${resourcebundleCoreVersion}"
-    compile "com.anubhavshukla:properties-to-yaml-converter:${propertiesToYamlConverterVersion}"
-    compile "de.alpharogroup:silly-collections:${sillyCollectionsVersion}"
-    compile "de.alpharogroup:file-worker:${fileWorkerVersion}"
-    testCompile "de.alpharogroup:mystic-crypt:${mysticCryptVersion}"
-    testCompile "de.alpharogroup:test-objects:${testObjectsVersion}"
-    testCompile "de.alpharogroup:jobj-contract-verifier:${jobjContractVerifierVersion}"
-    testCompile "org.testng:testng:${testngVersion}"
-    testCompile "junit:junit:${junitVersion}"
-    testCompile "org.meanbean:meanbean:${meanbeanVersion}"
-    testCompile "de.alpharogroup:meanbean-factories:${meanbeanFactoriesVersion}"
-    testCompile "org.mockito:mockito-core:${mockitoCoreVersion}"
+license {
+    ext.year="2015"
+    ext.owner="Asterios Raptis"
+    header rootProject.file("src/main/resources/LICENSE.txt")
+    excludes(["**/README",
+              "**/README.md",
+              "**/LICENSE",
+              "**/NOTICE",
+              "**/*.xml",
+              "**/*.xsl",
+              "**/*.xsd",
+              "**/*.dtd",
+              "**/*.html",
+              "**/*.jsp",
+              "**/*.jpa",
+              "**/*.sql",
+              "**/*.properties",
+              "**/*.bat",
+              "**/*.gradle",
+              "**/*.MF",
+              "**/*.txt",
+              "**/*.vm",
+              "**/*.log",
+              "**/*.map",
+              "**/*.js.map",
+              "**/*.tmpl",
+              "**/*.js.tmpl",
+              "**/*.editorconfig",
+              "**/*.lombok.config",
+              "src/test/resources/**",
+              "src/main/resources/**"])
 }
-//
-//license {
-//    ext.year="2015"
-//    ext.owner="Asterios Raptis"
-//    header rootProject.file("src/main/resources/LICENSE.txt")
-//    excludes(["**/README",
-//              "**/README.md",
-//              "**/LICENSE",
-//              "**/NOTICE",
-//              "**/*.xml",
-//              "**/*.xsl",
-//              "**/*.xsd",
-//              "**/*.dtd",
-//              "**/*.html",
-//              "**/*.jsp",
-//              "**/*.jpa",
-//              "**/*.sql",
-//              "**/*.properties",
-//              "**/*.bat",
-//              "**/*.gradle",
-//              "**/*.MF",
-//              "**/*.txt",
-//              "**/*.vm",
-//              "**/*.log",
-//              "**/*.map",
-//              "**/*.js.map",
-//              "**/*.tmpl",
-//              "**/*.js.tmpl",
-//              "**/*.editorconfig",
-//              "**/*.lombok.config",
-//              "src/test/resources/**",
-//              "src/main/resources/**"])
-//}
 
 task sourcesJar(type: Jar) {
     archiveClassifier.set("sources")
