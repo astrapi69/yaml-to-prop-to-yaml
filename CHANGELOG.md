@@ -4,14 +4,21 @@
 Version 1.2-SNAPSHOT
 -------------
 
+ADDED:
+ 
+- new build system gradle
+
 CHANGED:
 
-- update of silly-collections dependency version to 6
+- changed project nature from maven to gradle nature
+- removed lombok dependency
+- removed all lombok dependent imports
+- update of silly-collections dependency version to 8
 - update of file-worker dependency version to 5.4
 - update of mystic-crypt test dependency version to 7.3
-- update of junit test dependency version to 4.13
 - update of testng test dependency version to 7.1.1
-- update of mockito-core test dependency version to 3.2.4
+- removed of junit test dependency version to 4.13
+- removed of mockito-core test dependency version to 3.2.4
 
 Version 1.1.1
 -------------

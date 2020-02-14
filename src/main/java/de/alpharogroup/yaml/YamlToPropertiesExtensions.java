@@ -25,7 +25,6 @@
 package de.alpharogroup.yaml;
 
 import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
-import lombok.experimental.UtilityClass;
 import org.apache.commons.io.FileUtils;
 import org.yaml.snakeyaml.Yaml;
 
@@ -37,6 +36,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.TreeMap;
 
@@ -44,9 +44,9 @@ import java.util.TreeMap;
  * The class {@link YamlToPropertiesExtensions} provides methods for convert yaml files to
  * properties
  */
-@UtilityClass
-public class YamlToPropertiesExtensions
+public final class YamlToPropertiesExtensions
 {
+	private YamlToPropertiesExtensions(){}
 
 	/** The Constant YAML_CONVERTER. */
 	private static final Yaml YAML_CONVERTER = new Yaml();
@@ -62,6 +62,7 @@ public class YamlToPropertiesExtensions
 	 */
 	public static Properties toProperties(String yamlFilename) throws IOException
 	{
+		Objects.requireNonNull(yamlFilename);
 		String propertiesAsString = toPropertyEntries(toTreeMap(Paths.get(yamlFilename)), "=");
 		File file = File.createTempFile("properties", null);
 		FileUtils.writeStringToFile(file, propertiesAsString, StandardCharsets.UTF_8);

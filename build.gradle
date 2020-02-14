@@ -14,8 +14,9 @@ gradle.startParameter.excludedTaskNames += "licenseMain"
 gradle.startParameter.excludedTaskNames += "licenseTest"
 
 group = "de.alpharogroup"
-version = "1.2-SNAPSHOT"
-sourceCompatibility = 11
+version = "$projectVersion"
+description = "yaml-to-prop-to-yaml"
+sourceCompatibility = 1.8
 
 repositories {
     mavenLocal()
@@ -24,8 +25,6 @@ repositories {
 }
 
 dependencies {
-    compile "org.projectlombok:lombok:$lombokVersion"
-    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
     compile "org.yaml:snakeyaml:$snakeyamlVersion"
     compile "commons-io:commons-io:$commonsIoVersion"
     compile "de.alpharogroup:resourcebundle-core:$resourcebundleCoreVersion"
@@ -35,11 +34,8 @@ dependencies {
     testCompile "de.alpharogroup:mystic-crypt:$mysticCryptVersion"
     testCompile "de.alpharogroup:test-objects:$testObjectsVersion"
     testCompile "de.alpharogroup:jobj-contract-verifier:$jobjContractVerifierVersion"
-    testCompile "org.testng:testng:$testngVersion"
-    testCompile "junit:junit:$junitVersion"
     testCompile "org.meanbean:meanbean:$meanbeanVersion"
-    testCompile "de.alpharogroup:meanbean-factories:$meanbeanFactoriesVersion"
-    testCompile "org.mockito:mockito-core:$mockitoCoreVersion"
+    testCompile "org.testng:testng:$testngVersion"
 }
 
 license {

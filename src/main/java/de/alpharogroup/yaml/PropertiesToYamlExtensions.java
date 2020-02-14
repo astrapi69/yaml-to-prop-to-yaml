@@ -27,20 +27,19 @@ package de.alpharogroup.yaml;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 import de.alpharogroup.prop.to.yaml.PropertiesToYamlConverter;
 import org.apache.commons.io.FileUtils;
-
-import lombok.NonNull;
-import lombok.experimental.UtilityClass;
 
 /**
  * The class {@link PropertiesToYamlExtensions} provides methods for convert properties to yaml
  * files
  */
-@UtilityClass
-public class PropertiesToYamlExtensions
+public final class PropertiesToYamlExtensions
 {
+
+	private PropertiesToYamlExtensions(){}
 
 	/**
 	 * Converts the given properties file to a yaml string
@@ -49,8 +48,9 @@ public class PropertiesToYamlExtensions
 	 *            the properties file
 	 * @return the yaml string
 	 */
-	public static String toYamlString(final @NonNull File propertiesFile)
+	public static String toYamlString(final File propertiesFile)
 	{
+		Objects.requireNonNull(propertiesFile);
 		return PropertiesToYamlConverter.convert(propertiesFile);
 	}
 
@@ -61,8 +61,9 @@ public class PropertiesToYamlExtensions
 	 *            the properties filename
 	 * @return the yaml string
 	 */
-	public static String toYamlStringFromFile(final @NonNull File propertiesFile)
+	public static String toYamlStringFromFile(final File propertiesFile)
 	{
+		Objects.requireNonNull(propertiesFile);
 		return PropertiesToYamlConverter.convert(propertiesFile);
 	}
 
@@ -76,9 +77,11 @@ public class PropertiesToYamlExtensions
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
-	public static void toYamlFile(final @NonNull File propertiesFile,
-		final @NonNull File newYamlFileToWrite) throws IOException
+	public static void toYamlFile(final File propertiesFile,
+		final File newYamlFileToWrite) throws IOException
 	{
+		Objects.requireNonNull(propertiesFile);
+		Objects.requireNonNull(newYamlFileToWrite);
 		String yamlString = toYamlStringFromFile(propertiesFile);
 		FileUtils.writeStringToFile(newYamlFileToWrite, yamlString, StandardCharsets.UTF_8);
 	}
