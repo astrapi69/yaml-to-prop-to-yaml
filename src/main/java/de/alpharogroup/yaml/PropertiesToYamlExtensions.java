@@ -29,8 +29,9 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
-import de.alpharogroup.prop.to.yaml.PropertiesToYamlConverter;
 import org.apache.commons.io.FileUtils;
+
+import de.alpharogroup.prop.to.yaml.PropertiesToYamlConverter;
 
 /**
  * The class {@link PropertiesToYamlExtensions} provides methods for convert properties to yaml

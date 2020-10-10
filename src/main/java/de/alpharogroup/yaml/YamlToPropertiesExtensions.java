@@ -24,10 +24,6 @@
  */
 package de.alpharogroup.yaml;
 
-import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
-import org.apache.commons.io.FileUtils;
-import org.yaml.snakeyaml.Yaml;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,6 +35,11 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
 import java.util.TreeMap;
+
+import org.apache.commons.io.FileUtils;
+import org.yaml.snakeyaml.Yaml;
+
+import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 
 /**
  * The class {@link YamlToPropertiesExtensions} provides methods for convert yaml files to
