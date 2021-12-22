@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.yaml;
+package io.github.astrapi69.yaml;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +31,7 @@ import java.util.Objects;
 
 import org.apache.commons.io.FileUtils;
 
-import de.alpharogroup.prop.to.yaml.PropertiesToYamlConverter;
+import io.github.astrapi69.prop.to.yaml.PropertiesToYamlConverter;
 
 /**
  * The class {@link PropertiesToYamlExtensions} provides methods for convert properties to yaml
@@ -40,7 +40,9 @@ import de.alpharogroup.prop.to.yaml.PropertiesToYamlConverter;
 public final class PropertiesToYamlExtensions
 {
 
-	private PropertiesToYamlExtensions(){}
+	private PropertiesToYamlExtensions()
+	{
+	}
 
 	/**
 	 * Converts the given properties file to a yaml string
@@ -78,8 +80,8 @@ public final class PropertiesToYamlExtensions
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
-	public static void toYamlFile(final File propertiesFile,
-		final File newYamlFileToWrite) throws IOException
+	public static void toYamlFile(final File propertiesFile, final File newYamlFileToWrite)
+		throws IOException
 	{
 		Objects.requireNonNull(propertiesFile);
 		Objects.requireNonNull(newYamlFileToWrite);

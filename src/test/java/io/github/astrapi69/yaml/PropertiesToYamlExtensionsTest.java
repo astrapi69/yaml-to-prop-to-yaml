@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.yaml;
+package io.github.astrapi69.yaml;
 
 import static org.testng.Assert.assertEquals;
 
@@ -33,8 +33,8 @@ import org.apache.commons.io.FileUtils;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.crypto.file.checksum.FileChecksumExtensions;
-import de.alpharogroup.file.search.PathFinder;
+import io.github.astrapi69.checksum.FileChecksumExtensions;
+import io.github.astrapi69.file.search.PathFinder;
 
 /**
  * The unit test class for the class {@link PropertiesToYamlExtensions}
@@ -72,18 +72,10 @@ public class PropertiesToYamlExtensionsTest
 		String actual;
 		File propertiesFile = new File(PathFinder.getSrcTestResourcesDir(), "config.properties");
 		actual = PropertiesToYamlExtensions.toYamlString(propertiesFile);
-		expected = "application:\n" +
-				"  http:\n" +
-				"    port: '18080'\n" +
-				"  https:\n" +
-				"    port: '18443'\n" +
-				"  public-paths:\n" +
-				"  - /v1/jwt/authenticate\n" +
-				"  - /v1/jwt/ispublic\n" +
-				"  - /v1/auth/signin\n" +
-				"configuration:\n" +
-				"  type: DEVELOPMENT\n" +
-				"version: ${project.version}\n";
+		expected = "application:\n" + "  http:\n" + "    port: '18080'\n" + "  https:\n"
+			+ "    port: '18443'\n" + "  public-paths:\n" + "  - /v1/jwt/authenticate\n"
+			+ "  - /v1/jwt/ispublic\n" + "  - /v1/auth/signin\n" + "configuration:\n"
+			+ "  type: DEVELOPMENT\n" + "version: ${project.version}\n";
 		assertEquals(actual, expected);
 	}
 
@@ -95,14 +87,12 @@ public class PropertiesToYamlExtensionsTest
 	{
 		String expected;
 		String actual;
-		File propertiesFile = new File(PathFinder.getSrcTestResourcesDir(), "list-or-array.properties");
+		File propertiesFile = new File(PathFinder.getSrcTestResourcesDir(),
+			"list-or-array.properties");
 		actual = PropertiesToYamlExtensions.toYamlString(propertiesFile);
-		expected = "application:\n" +
-				"  public-paths:\n" +
-				"  - first: /v1/first\n" +
-				"    second: /v1/second\n" +
-				"  - first: /v1/public/first\n" +
-				"    second: /v1/public/second\n";
+		expected = "application:\n" + "  public-paths:\n" + "  - first: /v1/first\n"
+			+ "    second: /v1/second\n" + "  - first: /v1/public/first\n"
+			+ "    second: /v1/public/second\n";
 		assertEquals(actual, expected);
 	}
 

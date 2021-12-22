@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.yaml;
+package io.github.astrapi69.yaml;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,7 +39,7 @@ import java.util.TreeMap;
 import org.apache.commons.io.FileUtils;
 import org.yaml.snakeyaml.Yaml;
 
-import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
+import io.github.astrapi69.resourcebundle.properties.PropertiesFileExtensions;
 
 /**
  * The class {@link YamlToPropertiesExtensions} provides methods for convert yaml files to
@@ -47,10 +47,12 @@ import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
  */
 public final class YamlToPropertiesExtensions
 {
-	private YamlToPropertiesExtensions(){}
-
 	/** The Constant YAML_CONVERTER. */
 	private static final Yaml YAML_CONVERTER = new Yaml();
+
+	private YamlToPropertiesExtensions()
+	{
+	}
 
 	/**
 	 * To properties.

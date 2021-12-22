@@ -7,18 +7,25 @@ Version 1.2-SNAPSHOT
 ADDED:
  
 - new build system gradle
+- gradle to version 7.3.2
+
 
 CHANGED:
 
+- changed to new package io.github.astrapi69
 - changed project nature from maven to gradle nature
 - removed lombok dependency
 - removed all lombok dependent imports
-- update of silly-collections dependency version to 8
-- update of file-worker dependency version to 5.4
-- update of mystic-crypt test dependency version to 7.3
-- update of testng test dependency version to 7.1.1
-- removed of junit test dependency version to 4.13
-- removed of mockito-core test dependency version to 3.2.4
+- update of silly-collections dependency version to 18
+- update of file-worker dependency version to 8.1
+- update of snakeyaml dependency version to 1.30
+- update of prop-to-yaml dependency version to 1.2
+- update of resourcebundle-core dependency version to 4.3
+- update of commons-io dependency version to 2.11.0
+- update of testng test dependency version to 7.4.0
+- removed of mystic-crypt test dependency 
+- removed of junit test dependency 
+- removed of mockito-core test dependency 
 
 Version 1.1.1
 -------------
