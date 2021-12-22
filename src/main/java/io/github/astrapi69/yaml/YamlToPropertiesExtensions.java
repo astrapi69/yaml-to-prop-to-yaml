@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.yaml;
+package io.github.astrapi69.yaml;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,25 +32,27 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.TreeMap;
 
 import org.apache.commons.io.FileUtils;
 import org.yaml.snakeyaml.Yaml;
 
-import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
-import lombok.experimental.UtilityClass;
+import io.github.astrapi69.resourcebundle.properties.PropertiesFileExtensions;
 
 /**
  * The class {@link YamlToPropertiesExtensions} provides methods for convert yaml files to
  * properties
  */
-@UtilityClass
-public class YamlToPropertiesExtensions
+public final class YamlToPropertiesExtensions
 {
-
 	/** The Constant YAML_CONVERTER. */
 	private static final Yaml YAML_CONVERTER = new Yaml();
+
+	private YamlToPropertiesExtensions()
+	{
+	}
 
 	/**
 	 * To properties.
@@ -63,6 +65,7 @@ public class YamlToPropertiesExtensions
 	 */
 	public static Properties toProperties(String yamlFilename) throws IOException
 	{
+		Objects.requireNonNull(yamlFilename);
 		String propertiesAsString = toPropertyEntries(toTreeMap(Paths.get(yamlFilename)), "=");
 		File file = File.createTempFile("properties", null);
 		FileUtils.writeStringToFile(file, propertiesAsString, StandardCharsets.UTF_8);
@@ -135,15 +138,17 @@ public class YamlToPropertiesExtensions
 		StringBuilder sb = new StringBuilder();
 		for (String mapKey : map.keySet())
 		{
-			if (map.get(mapKey) instanceof Map)
+			Object object = map.get(mapKey);
+			if (object instanceof Map)
 			{
-				sb.append(toEntry(key + "." + mapKey, (Map<String, Object>)map.get(mapKey),
-					propertiesDelimiter));
+				Map<String, Object> castedMap = (Map<String, Object>)object;
+				sb.append(toEntry(key + "." + mapKey, castedMap, propertiesDelimiter));
 			}
 			else
 			{
-				sb.append(key).append(".").append(mapKey).append(propertiesDelimiter)
-					.append(map.get(mapKey).toString()).append("\n");
+				String value = object.toString();
+				sb.append(key).append(".").append(mapKey).append(propertiesDelimiter).append(value)
+					.append("\n");
 			}
 		}
 		return sb.toString();

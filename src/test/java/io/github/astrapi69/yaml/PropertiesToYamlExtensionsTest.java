@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -22,21 +22,19 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.yaml;
+package io.github.astrapi69.yaml;
 
 import static org.testng.Assert.assertEquals;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
 import org.apache.commons.io.FileUtils;
-import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.crypto.file.checksum.ChecksumExtensions;
-import de.alpharogroup.file.search.PathFinder;
+import io.github.astrapi69.checksum.FileChecksumExtensions;
+import io.github.astrapi69.file.search.PathFinder;
 
 /**
  * The unit test class for the class {@link PropertiesToYamlExtensions}
@@ -58,8 +56,8 @@ public class PropertiesToYamlExtensionsTest
 		File propertiesFile = new File(PathFinder.getSrcTestResourcesDir(), "config.properties");
 		File yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "config.yml");
 		PropertiesToYamlExtensions.toYamlFile(propertiesFile, yamlFile);
-		actual = ChecksumExtensions.getChecksum(yamlFile, true);
-		expected = 3250500933L;
+		actual = FileChecksumExtensions.getChecksum(yamlFile, true);
+		expected = 172605078L;
 		assertEquals(actual, expected);
 		FileUtils.deleteQuietly(yamlFile);
 	}
@@ -74,20 +72,38 @@ public class PropertiesToYamlExtensionsTest
 		String actual;
 		File propertiesFile = new File(PathFinder.getSrcTestResourcesDir(), "config.properties");
 		actual = PropertiesToYamlExtensions.toYamlString(propertiesFile);
-		expected = "application:\n" + "  http:\n" + "    port  :  18080\n" + "  https:\n"
-			+ "    port :  18443\n" + "configuration:\n" + "  type:  DEVELOPMENT\n"
-			+ "version: ${project.version}\n";
+		expected = "application:\n" + "  http:\n" + "    port: '18080'\n" + "  https:\n"
+			+ "    port: '18443'\n" + "  public-paths:\n" + "  - /v1/jwt/authenticate\n"
+			+ "  - /v1/jwt/ispublic\n" + "  - /v1/auth/signin\n" + "configuration:\n"
+			+ "  type: DEVELOPMENT\n" + "version: ${project.version}\n";
+		assertEquals(actual, expected);
+	}
+
+	/**
+	 * Test method for {@link PropertiesToYamlExtensions#toYamlString(File)}
+	 */
+	@Test
+	public void testToYamlStringWithList()
+	{
+		String expected;
+		String actual;
+		File propertiesFile = new File(PathFinder.getSrcTestResourcesDir(),
+			"list-or-array.properties");
+		actual = PropertiesToYamlExtensions.toYamlString(propertiesFile);
+		expected = "application:\n" + "  public-paths:\n" + "  - first: /v1/first\n"
+			+ "    second: /v1/second\n" + "  - first: /v1/public/first\n"
+			+ "    second: /v1/public/second\n";
 		assertEquals(actual, expected);
 	}
 
 	/**
 	 * Test method for {@link PropertiesToYamlExtensions} with {@link BeanTester}
 	 */
-	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
-			UnsupportedOperationException.class })
+	@Test
 	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(PropertiesToYamlExtensions.class);
 	}
+
 }

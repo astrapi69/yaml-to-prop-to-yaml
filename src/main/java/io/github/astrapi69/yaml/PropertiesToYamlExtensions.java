@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -22,26 +22,27 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.yaml;
+package io.github.astrapi69.yaml;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 import org.apache.commons.io.FileUtils;
 
-import com.anubhavshukla.p2y.converter.PropertiesToYamlConverter;
-
-import lombok.NonNull;
-import lombok.experimental.UtilityClass;
+import io.github.astrapi69.prop.to.yaml.PropertiesToYamlConverter;
 
 /**
  * The class {@link PropertiesToYamlExtensions} provides methods for convert properties to yaml
  * files
  */
-@UtilityClass
-public class PropertiesToYamlExtensions
+public final class PropertiesToYamlExtensions
 {
+
+	private PropertiesToYamlExtensions()
+	{
+	}
 
 	/**
 	 * Converts the given properties file to a yaml string
@@ -50,22 +51,23 @@ public class PropertiesToYamlExtensions
 	 *            the properties file
 	 * @return the yaml string
 	 */
-	public static String toYamlString(final @NonNull File propertiesFile)
+	public static String toYamlString(final File propertiesFile)
 	{
-		return toYamlString(propertiesFile.getAbsolutePath());
+		Objects.requireNonNull(propertiesFile);
+		return PropertiesToYamlConverter.convert(propertiesFile);
 	}
 
 	/**
 	 * Resolves the properties file from the given file name and converts it to a yaml string
 	 *
-	 * @param propertiesFilename
+	 * @param propertiesFile
 	 *            the properties filename
 	 * @return the yaml string
 	 */
-	public static String toYamlString(final @NonNull String propertiesFilename)
+	public static String toYamlStringFromFile(final File propertiesFile)
 	{
-		PropertiesToYamlConverter propertiesToYamlConverter = new PropertiesToYamlConverter();
-		return propertiesToYamlConverter.toYamlString(propertiesFilename);
+		Objects.requireNonNull(propertiesFile);
+		return PropertiesToYamlConverter.convert(propertiesFile);
 	}
 
 	/**
@@ -78,11 +80,12 @@ public class PropertiesToYamlExtensions
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
-	public static void toYamlFile(final @NonNull File propertiesFile,
-		final @NonNull File newYamlFileToWrite) throws IOException
+	public static void toYamlFile(final File propertiesFile, final File newYamlFileToWrite)
+		throws IOException
 	{
-		String propertiesFilename = propertiesFile.getAbsolutePath();
-		String yamlString = toYamlString(propertiesFilename);
+		Objects.requireNonNull(propertiesFile);
+		Objects.requireNonNull(newYamlFileToWrite);
+		String yamlString = toYamlStringFromFile(propertiesFile);
 		FileUtils.writeStringToFile(newYamlFileToWrite, yamlString, StandardCharsets.UTF_8);
 	}
 

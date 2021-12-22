@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -22,20 +22,18 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package de.alpharogroup.yaml;
+package io.github.astrapi69.yaml;
 
 import static org.testng.Assert.assertEquals;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
-import org.meanbean.test.BeanTestException;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.file.search.PathFinder;
+import io.github.astrapi69.file.search.PathFinder;
 
 /**
  * The unit test class for the class {@link YamlToPropertiesExtensions}
@@ -57,15 +55,14 @@ public class YamlToPropertiesExtensionsTest
 		File yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "application.yml");
 		Properties properties = YamlToPropertiesExtensions.toProperties(yamlFile.getAbsolutePath());
 		actual = properties.size();
-		expected = 14;
+		expected = 15;
 		assertEquals(actual, expected);
 	}
 
 	/**
 	 * Test method for {@link YamlToPropertiesExtensions} with {@link BeanTester}
 	 */
-	@Test(expectedExceptions = { BeanTestException.class, InvocationTargetException.class,
-			UnsupportedOperationException.class })
+	@Test
 	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();
