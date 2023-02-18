@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/astrapi69/yaml-to-prop-to-yaml.svg?branch=develop)](https://travis-ci.org/astrapi69/yaml-to-prop-to-yaml)
 [![Coverage Status](https://codecov.io/gh/astrapi69/yaml-to-prop-to-yaml/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/yaml-to-prop-to-yaml)
-[![Open Issues](https://img.shields.io/github/issues/astrapi69/yaml-to-prop-to-yaml.svg?style=flat)](https://github.com/astrapi69/yaml-to-prop-to-yaml/issues) 
+[![Open Issues](https://img.shields.io/github/issues/astrapi69/yaml-to-prop-to-yaml.svg?style=flat)](https://github.com/astrapi69/yaml-to-prop-to-yaml/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/yaml-to-prop-to-yaml/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/yaml-to-prop-to-yaml)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
 [![Javadoc](http://www.javadoc.io/badge/io.github.astrapi69/yaml-to-prop-to-yaml.svg)](http://www.javadoc.io/doc/io.github.astrapi69/yaml-to-prop-to-yaml)
@@ -50,23 +50,23 @@ Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search
 
 You can first define the version properties and add than the following maven dependency to your project `pom.xml` if you want to import the core functionality of yaml-to-prop-to-yaml:
 
-	<properties>
-			...
-		<!-- YAML-TO-PROP-TO-YAML version -->
-		<yaml-to-prop-to-yaml.version>1.2</yaml-to-prop-to-yaml.version>
-			...
-	</properties>
-			...
-		<dependencies>
-			...
-			<!-- YAML-TO-PROP-TO-YAML DEPENDENCY -->
-			<dependency>
-				<groupId>io.github.astrapi69</groupId>
-				<artifactId>yaml-to-prop-to-yaml</artifactId>
-				<version>${yaml-to-prop-to-yaml.version}</version>
-			</dependency>
-			...
-		</dependencies>	
+    <properties>
+            ...
+        <!-- YAML-TO-PROP-TO-YAML version -->
+        <yaml-to-prop-to-yaml.version>1.2</yaml-to-prop-to-yaml.version>
+            ...
+    </properties>
+            ...
+        <dependencies>
+            ...
+            <!-- YAML-TO-PROP-TO-YAML DEPENDENCY -->
+            <dependency>
+                <groupId>io.github.astrapi69</groupId>
+                <artifactId>yaml-to-prop-to-yaml</artifactId>
+                <version>${yaml-to-prop-to-yaml.version}</version>
+            </dependency>
+            ...
+        </dependencies>
 
 # Donations
 
@@ -136,7 +136,7 @@ or over flattr:
 
  * Converts yaml files to properties files or properties object
  * Converts properties files to yaml files or yaml object
-  
+
 ## License
 
 The source code comes under the liberal MIT License, making yaml-to-prop-to-yaml great for all types of applications.
@@ -200,4 +200,3 @@ Here is a list of awesome projects:
 |[![Javadoc](http://www.javadoc.io/badge/io.github.astrapi69/yaml-to-prop-to-yaml.svg)](http://www.javadoc.io/doc/io.github.astrapi69/yaml-to-prop-to-yaml) yaml-to-prop-to-yaml|
 |Special thanks to [javadoc.io](http://www.javadoc.io) for providing a free javadoc documentation for open source projects|
 |     <img width=1000/>     |
-
