@@ -30,6 +30,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
+import io.github.astrapi69.file.read.ReadFileExtensions;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
@@ -42,18 +43,55 @@ public class YamlToPropertiesExtensionsTest
 {
 
 	/**
-	 * Test method for {@link YamlToPropertiesExtensions#toProperties(String)}
-	 * 
+	 * Test method for {@link YamlToPropertiesExtensions#toProperties(File)}
+	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
 	 */
 	@Test
-	public void testTtoProperties() throws IOException
+	public void testYamlFileToProperties() throws IOException
+	{
+		int expected;
+		int actual;
+		File yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "application.yml");
+		Properties properties = YamlToPropertiesExtensions.toProperties(yamlFile);
+		actual = properties.size();
+		expected = 15;
+		assertEquals(actual, expected);
+	}
+
+	/**
+	 * Test method for {@link YamlToPropertiesExtensions#toProperties(String)}
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred
+	 */
+	@Test
+	public void testToPropertiesFromFilename() throws IOException
 	{
 		int expected;
 		int actual;
 		File yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "application.yml");
 		Properties properties = YamlToPropertiesExtensions.toProperties(yamlFile.getAbsolutePath());
+		actual = properties.size();
+		expected = 15;
+		assertEquals(actual, expected);
+	}
+
+	/**
+	 * Test method for {@link YamlToPropertiesExtensions#toPropertiesFromYamlString(String)}
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred
+	 */
+	@Test
+	public void testToPropertiesFromYamlString() throws IOException
+	{
+		int expected;
+		int actual;
+		File yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "application.yml");
+		Properties properties = YamlToPropertiesExtensions.toPropertiesFromYamlString(
+			ReadFileExtensions.fromFile(yamlFile));
 		actual = properties.size();
 		expected = 15;
 		assertEquals(actual, expected);

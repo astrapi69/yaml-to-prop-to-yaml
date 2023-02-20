@@ -37,6 +37,7 @@ import java.util.Properties;
 import java.util.TreeMap;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.yaml.snakeyaml.Yaml;
 
 import io.github.astrapi69.resourcebundle.properties.PropertiesFileExtensions;
@@ -57,12 +58,49 @@ public final class YamlToPropertiesExtensions
 	/**
 	 * To properties.
 	 *
+	 * @param yamlFile
+	 *            the yaml file
+	 * @return the properties
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred
+	 */
+	public static Properties toProperties(File yamlFile) throws IOException
+	{
+		Objects.requireNonNull(yamlFile);
+		String propertiesAsString = toPropertyEntries(toTreeMap(yamlFile.toPath()), "=");
+		File file = File.createTempFile("properties", null);
+		FileUtils.writeStringToFile(file, propertiesAsString, StandardCharsets.UTF_8);
+		return PropertiesFileExtensions.loadProperties(file);
+	}
+
+	/**
+	 * To properties.
+	 *
+	 * @param yamlString
+	 *            the yaml string
+	 * @return the properties
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred
+	 */
+	public static Properties toPropertiesFromYamlString(String yamlString) throws IOException
+	{
+		Objects.requireNonNull(yamlString);
+		String propertiesAsString = toPropertyEntries(toTreeMap(yamlString), "=");
+		File file = File.createTempFile("properties", null);
+		FileUtils.writeStringToFile(file, propertiesAsString, StandardCharsets.UTF_8);
+		return PropertiesFileExtensions.loadProperties(file);
+	}
+
+	/**
+	 * To properties.
+	 *
 	 * @param yamlFilename
 	 *            the yaml filename
 	 * @return the properties
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
-	 */
+	 * @deprecated use instead the same name with the file object. Will be removed in next minor version
+	 */@Deprecated
 	public static Properties toProperties(String yamlFilename) throws IOException
 	{
 		Objects.requireNonNull(yamlFilename);
@@ -85,6 +123,24 @@ public final class YamlToPropertiesExtensions
 	public static TreeMap<String, Object> toTreeMap(Path path) throws IOException
 	{
 		try (InputStream inputStream = Files.newInputStream(path))
+		{
+			return YAML_CONVERTER.loadAs(inputStream, TreeMap.class);
+		}
+	}
+
+	/**
+	 * To tree map
+	 *
+	 * @param yamlString
+	 *            the yaml string
+	 * @return the tree map
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred
+	 */
+	@SuppressWarnings("unchecked")
+	public static TreeMap<String, Object> toTreeMap(String yamlString) throws IOException
+	{
+		try (InputStream inputStream = IOUtils.toInputStream(yamlString, "UTF-8"))
 		{
 			return YAML_CONVERTER.loadAs(inputStream, TreeMap.class);
 		}

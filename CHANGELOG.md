@@ -4,12 +4,19 @@
 Version 2-SNAPSHOT
 -------------
 
+ADDED:
+
+- new converter method for convert a properties object to yaml string
+- new converter method for convert a properties object as string object to yaml string
+- new converter method for convert a yaml file object to a properties object
+- new converter method for convert a yaml string object to a properties object
+
 CHANGED:
 
 - update of silly-collection dependency version to 21
 - update of file-worker dependency version to 11.6
 - update of snakeyaml dependency version to 1.33
-- update of prop-to-yaml dependency version to 2
+- update of prop-to-yaml dependency version to 2.1
 - update of resourcebundle-core dependency version to 5
 - update of testng test dependency version to 7.7.1
 

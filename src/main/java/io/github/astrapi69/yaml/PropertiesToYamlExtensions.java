@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
+import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 
@@ -58,16 +59,29 @@ public final class PropertiesToYamlExtensions
 	}
 
 	/**
-	 * Resolves the properties file from the given file name and converts it to a yaml string
+	 * Converts the given properties object to a yaml string
 	 *
-	 * @param propertiesFile
-	 *            the properties filename
+	 * @param properties
+	 *            the properties
 	 * @return the yaml string
 	 */
-	public static String toYamlStringFromFile(final File propertiesFile)
+	public static String toYamlString(final Properties properties)
 	{
-		Objects.requireNonNull(propertiesFile);
-		return PropertiesToYamlConverter.convert(propertiesFile);
+		Objects.requireNonNull(properties);
+		return PropertiesToYamlConverter.convert(properties);
+	}
+
+	/**
+	 * Converts the given {@link String} object that represents a properties object to a yaml string
+	 *
+	 * @param propertiesAsString
+	 *            the properties as {@link String} object
+	 * @return the yaml string
+	 */
+	public static String toYamlString(final String propertiesAsString)
+	{
+		Objects.requireNonNull(propertiesAsString);
+		return PropertiesToYamlConverter.convert(propertiesAsString);
 	}
 
 	/**
@@ -85,7 +99,7 @@ public final class PropertiesToYamlExtensions
 	{
 		Objects.requireNonNull(propertiesFile);
 		Objects.requireNonNull(newYamlFileToWrite);
-		String yamlString = toYamlStringFromFile(propertiesFile);
+		String yamlString = toYamlString(propertiesFile);
 		FileUtils.writeStringToFile(newYamlFileToWrite, yamlString, StandardCharsets.UTF_8);
 	}
 
