@@ -1,11 +1,30 @@
 ## Change log
 ----------------------
 
+Version 2
+-------------
+
+ADDED:
+
+- new converter method for convert a properties object to yaml string
+- new converter method for convert a properties object as string object to yaml string
+- new converter method for convert a yaml file object to a properties object
+- new converter method for convert a yaml string object to a properties object
+
+CHANGED:
+
+- update of silly-collection dependency version to 21
+- update of file-worker dependency version to 11.6
+- update of snakeyaml dependency version to 1.33
+- update of prop-to-yaml dependency version to 2.1
+- update of resourcebundle-core dependency version to 5
+- update of testng test dependency version to 7.7.1
+
 Version 1.2
 -------------
 
 ADDED:
- 
+
 - new build system gradle
 - gradle to version 7.3.2
 
@@ -23,9 +42,9 @@ CHANGED:
 - update of resourcebundle-core dependency version to 4.3
 - update of commons-io dependency version to 2.11.0
 - update of testng test dependency version to 7.4.0
-- removed of mystic-crypt test dependency 
-- removed of junit test dependency 
-- removed of mockito-core test dependency 
+- removed of mystic-crypt test dependency
+- removed of junit test dependency
+- removed of mockito-core test dependency
 
 Version 1.1.1
 -------------
@@ -45,7 +64,7 @@ Version 1
 -------------
 
 ADDED:
- 
+
 - this changelog file
 - Donation buttons extended for paypal and bitcoin
 - added new meanbean dependency for better unit testing of beans
