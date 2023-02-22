@@ -99,8 +99,10 @@ public final class YamlToPropertiesExtensions
 	 * @return the properties
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred
-	 * @deprecated use instead the same name with the file object. Will be removed in next minor version
-	 */@Deprecated
+	 * @deprecated use instead the same name with the file object. Will be removed in next minor
+	 *             version
+	 */
+	@Deprecated
 	public static Properties toProperties(String yamlFilename) throws IOException
 	{
 		Objects.requireNonNull(yamlFilename);

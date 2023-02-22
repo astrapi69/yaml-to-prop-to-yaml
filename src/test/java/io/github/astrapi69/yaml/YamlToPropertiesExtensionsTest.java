@@ -30,10 +30,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
-import io.github.astrapi69.file.read.ReadFileExtensions;
 import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
+import io.github.astrapi69.file.read.ReadFileExtensions;
 import io.github.astrapi69.file.search.PathFinder;
 
 /**
@@ -90,8 +90,8 @@ public class YamlToPropertiesExtensionsTest
 		int expected;
 		int actual;
 		File yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "application.yml");
-		Properties properties = YamlToPropertiesExtensions.toPropertiesFromYamlString(
-			ReadFileExtensions.fromFile(yamlFile));
+		Properties properties = YamlToPropertiesExtensions
+			.toPropertiesFromYamlString(ReadFileExtensions.fromFile(yamlFile));
 		actual = properties.size();
 		expected = 15;
 		assertEquals(actual, expected);
