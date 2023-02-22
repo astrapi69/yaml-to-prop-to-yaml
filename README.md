@@ -2,7 +2,7 @@
 
 <div style="text-align: center">
 
-[![Build Status](https://travis-ci.org/astrapi69/yaml-to-prop-to-yaml.svg?branch=develop)](https://travis-ci.org/astrapi69/yaml-to-prop-to-yaml)
+[![Java CI with Gradle](https://github.com/astrapi69/yaml-to-prop-to-yaml/actions/workflows/gradle.yml/badge.svg)](https://github.com/astrapi69/yaml-to-prop-to-yaml/actions/workflows/gradle.yml)
 [![Coverage Status](https://codecov.io/gh/astrapi69/yaml-to-prop-to-yaml/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/yaml-to-prop-to-yaml)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/yaml-to-prop-to-yaml.svg?style=flat)](https://github.com/astrapi69/yaml-to-prop-to-yaml/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/yaml-to-prop-to-yaml/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/yaml-to-prop-to-yaml)
