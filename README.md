@@ -28,13 +28,13 @@ functionality of yaml-to-prop-to-yaml:
 define version in file gradle.properties
 
 ```
-yamlToPropToYamlVersion=1.2
+yamlToPropToYamlVersion=2
 ```
 
 or in build.gradle ext area
 
 ```
-    yamlToPropToYamlVersion = "1.2"
+    yamlToPropToYamlVersion = "2"
 ```
 
 and then add the dependency to the dependencies area
@@ -53,7 +53,7 @@ You can first define the version properties and add than the following maven dep
     <properties>
             ...
         <!-- YAML-TO-PROP-TO-YAML version -->
-        <yaml-to-prop-to-yaml.version>1.2</yaml-to-prop-to-yaml.version>
+        <yaml-to-prop-to-yaml.version>2</yaml-to-prop-to-yaml.version>
             ...
     </properties>
             ...
