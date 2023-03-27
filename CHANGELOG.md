@@ -4,7 +4,11 @@
 Version 2.1-SNAPSHOT
 -------------
 
+CHANGED:
 
+- update of gradle version to 8.0.2
+- update of gradle-plugin dependency com.diffplug.spotless:spotless-plugin-gradle to new version 6.17.0
+- update of snakeyaml dependency version to 2.0
 
 Version 2
 -------------

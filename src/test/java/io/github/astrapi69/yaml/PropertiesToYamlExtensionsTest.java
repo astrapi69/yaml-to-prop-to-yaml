@@ -70,12 +70,21 @@ public class PropertiesToYamlExtensionsTest
 	{
 		String expected;
 		String actual;
-		File propertiesFile = new File(PathFinder.getSrcTestResourcesDir(), "config.properties");
+		File propertiesFile;
+
+		propertiesFile = new File(PathFinder.getSrcTestResourcesDir(), "config.properties");
 		actual = PropertiesToYamlExtensions.toYamlString(propertiesFile);
 		expected = "application:\n" + "  http:\n" + "    port: '18080'\n" + "  https:\n"
 			+ "    port: '18443'\n" + "  public-paths:\n" + "  - /v1/jwt/authenticate\n"
 			+ "  - /v1/jwt/ispublic\n" + "  - /v1/auth/signin\n" + "configuration:\n"
 			+ "  type: DEVELOPMENT\n" + "version: ${project.version}\n";
+		assertEquals(actual, expected);
+
+		propertiesFile = new File(PathFinder.getSrcTestResourcesDir(),
+			"multiline-values.properties");
+		actual = PropertiesToYamlExtensions.toYamlString(propertiesFile);
+		expected = "foo:\n" + "  bar: |-\n" + "    first line\n" + "    second line\n"
+			+ "    last line\n" + "primes: 2,3, 5,7,11, 13,17\n";
 		assertEquals(actual, expected);
 	}
 

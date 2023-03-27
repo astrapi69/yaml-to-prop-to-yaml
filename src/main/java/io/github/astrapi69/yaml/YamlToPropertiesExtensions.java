@@ -85,7 +85,8 @@ public final class YamlToPropertiesExtensions
 	public static Properties toPropertiesFromYamlString(String yamlString) throws IOException
 	{
 		Objects.requireNonNull(yamlString);
-		String propertiesAsString = toPropertyEntries(toTreeMap(yamlString), "=");
+		TreeMap<String, Object> stringObjectTreeMap = toTreeMap(yamlString);
+		String propertiesAsString = toPropertyEntries(stringObjectTreeMap, "=");
 		File file = File.createTempFile("properties", null);
 		FileUtils.writeStringToFile(file, propertiesAsString, StandardCharsets.UTF_8);
 		return PropertiesFileExtensions.loadProperties(file);
@@ -106,7 +107,8 @@ public final class YamlToPropertiesExtensions
 	public static Properties toProperties(String yamlFilename) throws IOException
 	{
 		Objects.requireNonNull(yamlFilename);
-		String propertiesAsString = toPropertyEntries(toTreeMap(Paths.get(yamlFilename)), "=");
+		TreeMap<String, Object> stringObjectTreeMap = toTreeMap(Paths.get(yamlFilename));
+		String propertiesAsString = toPropertyEntries(stringObjectTreeMap, "=");
 		File file = File.createTempFile("properties", null);
 		FileUtils.writeStringToFile(file, propertiesAsString, StandardCharsets.UTF_8);
 		return PropertiesFileExtensions.loadProperties(file);

@@ -89,11 +89,21 @@ public class YamlToPropertiesExtensionsTest
 	{
 		int expected;
 		int actual;
-		File yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "application.yml");
-		Properties properties = YamlToPropertiesExtensions
+		File yamlFile;
+		Properties properties;
+
+		yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "application.yml");
+		properties = YamlToPropertiesExtensions
 			.toPropertiesFromYamlString(ReadFileExtensions.fromFile(yamlFile));
 		actual = properties.size();
 		expected = 15;
+		assertEquals(actual, expected);
+
+		yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "multiline-values.yaml");
+		properties = YamlToPropertiesExtensions
+			.toPropertiesFromYamlString(ReadFileExtensions.fromFile(yamlFile));
+		actual = properties.size();
+		expected = 4;
 		assertEquals(actual, expected);
 	}
 
