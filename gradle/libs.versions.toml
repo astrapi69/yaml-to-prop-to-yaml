@@ -1,0 +1,48 @@
+[versions]
+checksum-up-version = "2.2"
+commons-io-version = "2.11.0"
+crypt-api-version = "8.4"
+file-worker-version = "11.6"
+gradle-plugin-grgit-version = "5.2.2"
+gradle-plugin-license-version = "0.16.1"
+gradle-plugin-spotless-version = "7.0.0.BETA1"
+gradle-plugin-version-catalog-update-version = "0.8.4"
+gradle-plugin-versions-version = "0.51.0"
+jobj-contract-verifier-version = "4"
+json-extensions-version = "2.4"
+meanbean-version = "3.0.0-M9"
+prop-to-yaml-version = "2.1"
+resourcebundle-core-version = "5"
+silly-collection-version = "21"
+snakeyaml-version = "2.0"
+test-object-version = "7.2"
+testng-version = "7.7.1"
+
+[libraries]
+checksum-up = { module = "io.github.astrapi69:checksum-up", version.ref = "checksum-up-version" }
+commons-io = { module = "commons-io:commons-io", version.ref = "commons-io-version" }
+crypt-api = { module = "io.github.astrapi69:crypt-api", version.ref = "crypt-api-version" }
+file-worker = { module = "io.github.astrapi69:file-worker", version.ref = "file-worker-version" }
+jobj-contract-verifier = { module = "io.github.astrapi69:jobj-contract-verifier", version.ref = "jobj-contract-verifier-version" }
+json-extensions = { module = "io.github.astrapi69:json-extensions", version.ref = "json-extensions-version" }
+meanbean = { module = "com.github.meanbeanlib:meanbean", version.ref = "meanbean-version" }
+prop-to-yaml = { module = "io.github.astrapi69:prop-to-yaml", version.ref = "prop-to-yaml-version" }
+resourcebundle-core = { module = "io.github.astrapi69:resourcebundle-core", version.ref = "resourcebundle-core-version" }
+silly-collection = { module = "io.github.astrapi69:silly-collection", version.ref = "silly-collection-version" }
+snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml-version" }
+test-object = { module = "io.github.astrapi69:test-object", version.ref = "test-object-version" }
+testng = { module = "org.testng:testng", version.ref = "testng-version" }
+
+[bundles]
+unit-testing = [
+    "meanbean",
+    "test-object",
+    "testng",
+]
+
+[plugins]
+gradle-versions-plugin = { id = "com.github.ben-manes.versions", version.ref = "gradle-plugin-versions-version" }
+grgit-gradle = { id = "org.ajoberstar.grgit", version.ref = "gradle-plugin-grgit-version" }
+license-gradle-plugin = { id = "com.github.hierynomus.license", version.ref = "gradle-plugin-license-version" }
+spotless-plugin-gradle = { id = "com.diffplug.spotless", version.ref = "gradle-plugin-spotless-version" }
+version-catalog-update = { id = "nl.littlerobots.version-catalog-update", version.ref = "gradle-plugin-version-catalog-update-version" }

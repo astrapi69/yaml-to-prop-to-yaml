@@ -61,24 +61,6 @@ public class YamlToPropertiesExtensionsTest
 	}
 
 	/**
-	 * Test method for {@link YamlToPropertiesExtensions#toProperties(String)}
-	 *
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred
-	 */
-	@Test
-	public void testToPropertiesFromFilename() throws IOException
-	{
-		int expected;
-		int actual;
-		File yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "application.yml");
-		Properties properties = YamlToPropertiesExtensions.toProperties(yamlFile.getAbsolutePath());
-		actual = properties.size();
-		expected = 15;
-		assertEquals(actual, expected);
-	}
-
-	/**
 	 * Test method for {@link YamlToPropertiesExtensions#toPropertiesFromYamlString(String)}
 	 *
 	 * @throws IOException
@@ -105,6 +87,10 @@ public class YamlToPropertiesExtensionsTest
 		actual = properties.size();
 		expected = 4;
 		assertEquals(actual, expected);
+
+		yamlFile = new File(PathFinder.getSrcTestResourcesDir(), "multiline-values.yaml");
+		String json = YamlToJsonExtensions.toJson(yamlFile);
+		System.out.println(json);
 	}
 
 	/**

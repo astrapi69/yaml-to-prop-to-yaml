@@ -4,10 +4,17 @@
 Version 2.1-SNAPSHOT
 -------------
 
+ADDED:
+
+- new libs.versions.toml file for new automatic catalog versions update
+
 CHANGED:
 
-- update of gradle version to 8.0.2
-- update of gradle-plugin dependency com.diffplug.spotless:spotless-plugin-gradle to new version 6.17.0
+- update gradle to new version 8.8
+- update of gradle-plugin dependency with id 'com.github.ben-manes.versions' to new patch version 0.51.0
+- update of gradle-plugin dependency with id 'org.ajoberstar.grgit' to new patch version 5.2.2
+- update of gradle-plugin dependency with id 'io.freefair.lombok' to new patch version 8.6
+- update of gradle-plugin dependency with id 'com.diffplug.spotless' to new beta version 7.0.0.BETA1
 - update of snakeyaml dependency version to 2.0
 
 Version 2
